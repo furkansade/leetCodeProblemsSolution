@@ -1,21 +1,16 @@
-func containsDuplicate(nums []int) bool {
-	m := make(map[int]int)
+func maxProfit(prices []int) int {
+	min := math.MaxUint32
+	res := 0
 
-	for _, v := range nums {
-
-		if _, ok := m[v]; !ok {
-			m[v] = 1
+	for _, price := range prices {
+		if price > min {
+			if price-min > res {
+				res = price - min
+			}
 		} else {
-			return true
+			min = price
 		}
-
-		// _, ok := m[v]
-		// if ok == false {
-		// 	m[v] = 1
-		// } else {
-		// 	return true
-		// }
-
 	}
-	return false
+
+	return res
 }
